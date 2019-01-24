@@ -1,0 +1,5 @@
+# 针对 IDEA 环境 编写的忽略规则，一旦编写，无须add，就默认在commit的时候就生效了。 #
+.idea/
+*.iml
+*.class
+target/
