@@ -1,9 +1,26 @@
 package com.cosyit.ch2.conf.config;
 
-import org.springframework.context.annotation.ComponentScan;
+import com.cosyit.ch2.conf.service.FunctionService;
+import com.cosyit.ch2.conf.service.impl.FunctionServiceImpl;
+import com.cosyit.ch2.conf.uncontroller.UseFunctionService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration // Java配置类。
-@ComponentScan("com.cosyit.ch1.di")  //扫描所有@Component组件，加入到Spring 容器。
 public class DiConfig {
+
+    @Bean
+    public FunctionService functionService() {
+        return new FunctionServiceImpl();
+    }
+
+
+    @Bean
+    public UseFunctionService useFunctionService() {
+
+        UseFunctionService useFunctionService = new UseFunctionService();
+        useFunctionService.setFunctionService(functionService());
+        return useFunctionService;
+    }
+
 }
